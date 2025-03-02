@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koperasi Simpan Pinjam</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(to right, #1e3c72, #2a5298);
+            color: white;
+            padding: 3rem 0;
+            position: relative;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            text-align: center;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"%3E%3Ccircle fill="rgba(255,255,255,0.1)" cx="100" cy="100" r="100"/%3E%3C/svg%3E');
+            opacity: 0.1;
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        nav {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 1rem;
+            border-radius: 50px;
+            max-width: 700px;
+            margin: 0 auto;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.7rem 1.5rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        nav ul li a:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: scale(1.05);
+        }
+
+        section {
+            background: white;
+            margin: 2.5rem auto;
+            padding: 2.5rem;
+            max-width: 750px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #27ae60, #219150);
+        }
+
+        section:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+        }
+
+        h2 {
+            color: #1e3c72;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            width: 70px;
+            height: 4px;
+            background: linear-gradient(to right, #27ae60, #2ecc71);
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 14px;
+            margin: 12px 0;
+            border: none;
+            border-radius: 10px;
+            background: #f9fafb;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(39, 174, 96, 0.2);
+            background: white;
+        }
+
+        button {
+            background: linear-gradient(to right, #27ae60, #2ecc71);
+            color: white;
+            padding: 14px 30px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 1.5rem auto;
+        }
+
+        button:hover {
+            background: linear-gradient(to right, #219150, #27ae60);
+            transform: scale(1.08);
+            box-shadow: 0 6px 20px rgba(39, 174, 96, 0.3);
+        }
+
+        footer {
+            background: linear-gradient(to right, #1e3c72, #2a5298);
+            color: white;
+            padding: 2rem;
+            position: relative;
+            width: 100%;
+            clip-path: polygon(0 20%, 100% 0, 100% 100%, 0 100%);
+            text-align: center;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        #hasil {
+            background: #e8f5e9;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 1.5rem;
+            color: #219150;
+            font-weight: 600;
+            border-left: 5px solid #27ae60;
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+        }
+
+        .whatsapp-btn:hover {
+            background: #20bd57;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            section {
+                margin: 1.5rem;
+                padding: 1.5rem;
+            }
+            header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Koperasi Cibal</h1>
+        <nav>
+            <ul>
+                <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#kalkulator"><i class="fas fa-calculator"></i> Kalkulator</a></li>
+                <li><a href="#pengajuan"><i class="fas fa-file-alt"></i> Pengajuan</a></li>
+                <li><a href="#kontak"><i class="fas fa-envelope"></i> Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section id="home">
+        <h2>Selamat Datang</h2>
+        <p>Solusi terpercaya untuk kebutuhan simpanan dan pinjaman Anda dengan pelayanan cepat, aman, dan mudah.</p>
+    </section>
+    
+    <section id="kalkulator">
+        <h2>Kalkulator Pinjaman</h2>
+        <label for="jumlah">Jumlah Pinjaman (Rp):</label>
+        <input type="text" id="jumlah" placeholder="Masukkan jumlah pinjaman" oninput="formatNumber(this)">
+        <label for="bunga">Bunga (% per tahun):</label>
+        <input type="number" id="bunga" placeholder="Masukkan persentase bunga" min="0" step="0.1">
+        <label for="tenor">Tenor (bulan):</label>
+        <input type="number" id="tenor" placeholder="Masukkan jangka waktu" min="1">
+        <button onclick="hitungPinjaman()"><i class="fas fa-calculator"></i> Hitung Sekarang</button>
+        <p id="hasil"></p>
+    </section>
+    
+    <section id="pengajuan">
+        <h2>Pengajuan Pinjaman</h2>
+        <form id="pengajuanForm">
+            <label for="nama">Nama Lengkap:</label>
+            <input type="text" id="nama" placeholder="Masukkan nama Anda" required>
+            <label for="nominal">Jumlah Pinjaman (Rp):</label>
+            <input type="text" id="nominal" placeholder="Masukkan jumlah" oninput="formatNumber(this)" required>
+            <label for="alasan">Alasan Pinjaman:</label>
+            <textarea id="alasan" placeholder="Jelaskan kebutuhan Anda" required></textarea>
+            <button type="submit" class="whatsapp-btn"><i class="fab fa-whatsapp"></i> Ajukan via WhatsApp</button>
+        </form>
+    </section>
+    
+    <footer id="kontak">
+        <p><i class="fas fa-envelope"></i> koperasicibal2512@gmail.com | <i class="fas fa-phone"></i> +62 819-0735-6683</p>
+    </footer>
+    
+    <script>
+        // Fungsi untuk menambahkan titik pemisah ribuan
+        function formatNumber(input) {
+            let value = input.value.replace(/\D/g, ''); // Hanya ambil angka
+            let formattedValue = Number(value).toLocaleString('id-ID');
+            input.value = formattedValue;
+        }
+
+        // Fungsi untuk menghapus titik saat menghitung
+        function removeDots(value) {
+            return parseFloat(value.replace(/\./g, ''));
+        }
+
+        function hitungPinjaman() {
+            let jumlah = document.getElementById("jumlah").value;
+            let bunga = document.getElementById("bunga").value;
+            let tenor = document.getElementById("tenor").value;
+            
+            // Menghapus titik dari input jumlah
+            jumlah = removeDots(jumlah);
+
+            if (jumlah && bunga && tenor && jumlah > 0 && bunga >= 0 && tenor > 0) {
+                let totalBunga = (jumlah * (bunga / 100) * (tenor / 12));
+                let totalBayar = parseFloat(jumlah) + totalBunga;
+                let cicilanBulanan = totalBayar / tenor;
+                
+                document.getElementById("hasil").innerHTML = `
+                    <strong>Cicilan Bulanan:</strong> Rp ${cicilanBulanan.toLocaleString('id-ID', { minimumFractionDigits: 2 })}<br>
+                    <strong>Total Bunga:</strong> Rp ${totalBunga.toLocaleString('id-ID', { minimumFractionDigits: 2 })}<br>
+                    <strong>Total Pembayaran:</strong> Rp ${totalBayar.toLocaleString('id-ID', { minimumFractionDigits: 2 })}
+                `;
+            } else {
+                alert("Mohon masukkan nilai yang valid di semua kolom!");
+            }
+        }
+
+        document.getElementById("pengajuanForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+            const nama = document.getElementById("nama").value;
+            let nominal = document.getElementById("nominal").value;
+            const alasan = document.getElementById("alasan").value;
+
+            // Menghapus titik dari nominal untuk pengiriman
+            nominal = removeDots(nominal);
+
+            if (nama && nominal && alasan) {
+                const phoneNumber = "+62 819-0735-6683"; // Ganti dengan nomor WhatsApp koperasi
+                const message = `Pengajuan Pinjaman Baru:%0A%0ANama: ${encodeURIComponent(nama)}%0AJumlah: Rp ${Number(nominal).toLocaleString('id-ID')}%0AAlasan: ${encodeURIComponent(alasan)}`;
+                const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${message}`;
+                
+                window.open(whatsappUrl, '_blank');
+                this.reset();
+            } else {
+                alert("Mohon lengkapi semua kolom!");
+            }
+        });
+    </script>
+</body>
+</html>
